@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nhncorp.study.board.mapper.BoardUserMapper">
+	<select id="getUser" resultType="com.nhncorp.study.board.model.BoardUser">
+		SELECT *
+		FROM board_user
+		WHERE id = #{id}
+	</select>
+</mapper>

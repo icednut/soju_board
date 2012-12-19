@@ -1,0 +1,1 @@
+insert into board_user values('geun', 'ÀÌ¿Ï±Ù', 'aaa@nhn.com');
