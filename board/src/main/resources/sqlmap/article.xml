@@ -7,6 +7,7 @@
 			article_seq as "seq",
 			title,
 			contents,
+			to_char(reg_ymdt, 'YYYY-MM-DD HH24:MI:SS') as "regYmdt",
 			board_user_id as "member.id"
 		FROM article
 		<where>
@@ -17,5 +18,6 @@
 				and board_user_id = #{memberId}
 			</if>
 		</where>
+		LIMIT #{from}, #{to}
 	</select>
 </mapper>

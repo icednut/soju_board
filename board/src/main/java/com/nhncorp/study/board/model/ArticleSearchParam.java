@@ -17,4 +17,6 @@ public class ArticleSearchParam {
 	private int page;
 	private String title;
 	private Member member;
+	private int from;
+	private int to;
 }

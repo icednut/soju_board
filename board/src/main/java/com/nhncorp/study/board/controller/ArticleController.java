@@ -12,30 +12,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nhncorp.study.board.model.Article;
 import com.nhncorp.study.board.model.ArticleSearchParam;
-import com.nhncorp.study.board.model.Member;
 import com.nhncorp.study.board.service.ArticleService;
+import com.nhncorp.study.board.utils.PageUtils;
 
 @Controller
 @RequestMapping(value = "/article")
 public class ArticleController {
 	@Autowired
 	private ArticleService service;
+	
+	@Autowired
+	private PageUtils pageUtils;
 
 	@RequestMapping(value = "/form", method = RequestMethod.GET)
 	public String getArticleForm(Model model) {
-		Article article = new Article();
-		Member member = new Member();
-		member.setId("crazybnn");
-		member.setName("Lee");
-		article.setMember(member);
-		model.addAttribute("article", article);
 		return "article/form";
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String saveArticleForm(@Valid Article article,
-			BindingResult bindingResult, Model model) {
-		System.out.println("hello article view");
+	public String saveArticleForm(@Valid Article article, BindingResult bindingResult, Model model) {
 		model.addAttribute("article", article);
 
 		if (bindingResult.hasErrors()) {
@@ -48,6 +43,10 @@ public class ArticleController {
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public @ResponseBody
 	Model getArticles(Model model, ArticleSearchParam param) {
+		int page = param.getPage();
+		param.setFrom(pageUtils.getFrom(page));
+		param.setTo(pageUtils.getTo(page));
+
 		model.addAttribute("articles", service.getArticles(param));
 		return model;
 	}

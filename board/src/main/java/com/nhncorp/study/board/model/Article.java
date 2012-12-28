@@ -3,26 +3,28 @@ package com.nhncorp.study.board.model;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Data
+//@EqualsAndHashCode(exclude = {"title", "regYmdt", "contents", "member"})
 public class Article {
 	int seq;
-	@NotBlank(message = "제목이 비어있습니다. 제목을 입렭하여 주세요.")
+	@NotBlank(message = "error title")
 	String title;
 	String contents;
 	String regYmdt;
 
-	@NotNull(message = "작성자 정보가 없습니다.")
+	@NotNull(message = "error member")
 	Member member;
 
-	public Article() {
-		super();
-		Member member = new Member();
-		member.setId("crazybnn");
-		member.setName("Lee");
-		this.setMember(member);
-	}
+//	public Article() {
+//		super();
+//		Member member = new Member();
+//		member.setId("crazybnn");
+//		member.setName("Lee");
+//		this.setMember(member);
+//	}
 
 }

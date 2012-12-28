@@ -70,20 +70,36 @@ public class ArticleControllerTest {
 		List<Article> expectArticleList = new ArrayList<Article>();
 		Member member = new Member();
 		member.setId("crazybnn");
-		member.setName("이완근");
-		Article article = new Article();
-		article.setTitle("연습1");
-		article.setContents("연습1 내용");
-		article.setMember(member);
-		article.setRegYmdt("2012-12-20 11:23:01");
-		expectArticleList.add(article);
+		
+		Article article1 = new Article();
+		article1.setSeq(1);
+		article1.setTitle("TEST 1");
+		article1.setContents("TEST 1 content");
+		article1.setMember(member);
+		article1.setRegYmdt("2012-12-20 11:23:01");
+
+		Article article2 = new Article();
+		article2.setSeq(2);
+		article2.setTitle("TEST 2");
+		article2.setContents("TEST 2 content");
+		article2.setMember(member);
+		article2.setRegYmdt("2012-12-21 11:23:01");
+
+		Article article3 = new Article();
+		article3.setSeq(3);
+		article3.setTitle("TEST 3");
+		article3.setContents("TEST 3 content");
+		article3.setMember(member);
+		article3.setRegYmdt("2012-12-22 11:23:01");		
+		
+		expectArticleList.add(article1);
+		expectArticleList.add(article2);
+		expectArticleList.add(article3);
 
 		// when & then
 		MockMvcBuilders
 				.xmlConfigSetup("classpath:root-context.xml",
-						"classpath:servlet-context.xml",
-						"classpath:datasource-context.xml",
-						"classpath:mybatis-context.xml").build()
+						"classpath:servlet-context.xml").build()
 				.perform(post("/article/list").param("page", "1"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("articles", expectArticleList));
