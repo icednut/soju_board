@@ -70,10 +70,10 @@ public class ArticleControllerTest {
 		List<Article> expectArticleList = new ArrayList<Article>();
 		Member member = new Member();
 		member.setId("crazybnn");
-		member.setName("�̿ϱ�");
+		member.setName("이완근");
 		Article article = new Article();
-		article.setTitle("����1");
-		article.setContents("����1 ����");
+		article.setTitle("연습1");
+		article.setContents("연습1 내용");
 		article.setMember(member);
 		article.setRegYmdt("2012-12-20 11:23:01");
 		expectArticleList.add(article);

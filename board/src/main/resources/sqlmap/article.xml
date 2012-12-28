@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nhncorp.study.board.mapper.ArticleMapper">
+	<select id="selectArticles" parameterType="com.nhncorp.study.board.model.ArticleSearchParam" resultType="com.nhncorp.study.board.model.Article">
+ 		SELECT 
+			article_seq as "seq",
+			title,
+			contents,
+			board_user_id as "member.id"
+		FROM article
+		<where>
+			<if test="title != null and title != ''">
+				and title like '%' || #{title} || '%'
+			</if>
+			<if test="member != null and member.id != ''">
+				and board_user_id = #{memberId}
+			</if>
+		</where>
+	</select>
+</mapper>
