@@ -8,16 +8,28 @@
 			title,
 			contents,
 			to_char(reg_ymdt, 'YYYY-MM-DD HH24:MI:SS') as "regYmdt",
+			view_count as "viewCount",
 			board_user_id as "member.id"
 		FROM article
 		<where>
 			<if test="title != null and title != ''">
 				and title like '%' || #{title} || '%'
 			</if>
+			<if test="contents != null and contents != ''">
+				and contents like '%' || #{contents} || '%'
+			</if>
 			<if test="member != null and member.id != ''">
-				and board_user_id = #{memberId}
+				and board_user_id = #{member.id}
 			</if>
 		</where>
+		<choose>
+			<when test="orderingType!= null and orderingType == 'viewCount'">
+				ORDER BY view_count
+			</when>
+			<otherwise>
+				ORDER BY reg_ymdt
+			</otherwise>
+		</choose>
 		LIMIT #{from}, #{to}
 	</select>
 </mapper>

@@ -19,6 +19,6 @@
 	</bean>
 
 	<bean id="pageUtils" class="com.nhncorp.study.board.utils.PageUtils">
-		<property name="pagePerArticleCount" value="10" />
+		<property name="pagePerArticleCount" value="15" />
 	</bean>
 </beans>

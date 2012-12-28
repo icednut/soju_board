@@ -13,13 +13,12 @@ import com.nhncorp.study.board.model.Article;
 public class HelloSpringController {
 	@RequestMapping("/hello")
 	public ModelAndView hello(@RequestParam String title) {
-		System.out.println("hello spring request " + title);
 		return new ModelAndView("helloSpring");
 	}
 
 	@RequestMapping("/hello2")
 	public ModelAndView hello2(@RequestParam String title,
-			@RequestParam(value = "cont", required = false, defaultValue = "hello ±è¿µÁø") String contents) {
+			@RequestParam(value = "cont", required = false, defaultValue = "hello ï¿½è¿µï¿½ï¿½") String contents) {
 		System.out.println(title + " " + contents);
 		return new ModelAndView("helloSpring");
 	}

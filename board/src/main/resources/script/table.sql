@@ -8,6 +8,7 @@ create table article(
 	article_seq INT PRIMARY KEY,
 	title varchar(100),
 	contents varchar(100),
+	view_count int,
 	reg_ymdt timestamp,
 	board_user_id varchar(10)
 );

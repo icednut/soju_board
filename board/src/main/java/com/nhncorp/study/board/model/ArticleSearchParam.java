@@ -16,6 +16,8 @@ import lombok.Data;
 public class ArticleSearchParam {
 	private int page;
 	private String title;
+	private String contents;
+	private String orderingType;
 	private Member member;
 	private int from;
 	private int to;
