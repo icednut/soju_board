@@ -77,4 +77,10 @@ public class ArticleController {
 		System.out.println(resultMap.toString());
 		return resultMap;
 	}
+	
+	@RequestMapping(value = "/getArticle.nhn", method = RequestMethod.POST)
+	@ResponseBody
+	public Article getArticle(ArticleSearchParam param) {
+		return service.getArticle(param);
+	}
 }

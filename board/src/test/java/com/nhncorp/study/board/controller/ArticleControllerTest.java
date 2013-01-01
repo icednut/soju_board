@@ -323,10 +323,35 @@ public class ArticleControllerTest {
 		// when & then
 		mockMvc.build()
 				.perform(
-						post("/article/getArticles.nhn").param("orderingType",
-								"viewCount").param("page", "1"))
+						post("/article/getArticles.nhn")
+							.param("orderingType", "viewCount")
+							.param("page", "1"))
 				.andExpect(status().isOk())
 				.andExpect(content().type("application/json;charset=UTF-8"));
 		// .andExpect(content().string(resultMap.toString()));
+	}
+	
+	@Test
+	public void testGetArticle_게시글_상세보기_성공() throws Exception {
+		// given
+		Member member = new Member();
+		member.setId("crazybnn");
+
+		Article article = new Article();
+		article.setSeq(1);
+		article.setTitle("TEST 1");
+		article.setContents("TEST 1 Content");
+		article.setRegYmdt("2012-12-20 11:23:01");
+		article.setMember(member);
+
+		// when
+
+		// then
+		mockMvc.build()
+				.perform(
+						post("/article/getArticle.nhn")
+							.param("seq", "1"))
+				.andExpect(status().isOk())
+				.andExpect(content().type("application/json;charset=UTF-8"));
 	}
 }

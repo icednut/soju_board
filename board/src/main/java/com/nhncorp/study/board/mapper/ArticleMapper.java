@@ -19,4 +19,6 @@ public interface ArticleMapper {
 
 	public List<Article> selectArticles(ArticleSearchParam searchParam);
 
+	public Article selectArticle(ArticleSearchParam param);
+
 }

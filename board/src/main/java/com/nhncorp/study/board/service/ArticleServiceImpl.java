@@ -25,12 +25,22 @@ public class ArticleServiceImpl implements ArticleService {
 	private ArticleMapper articleMapper;
 
 	/**
+	 * 게시글 목록 조회
 	 * @param searchParam
 	 * @return
 	 * @see com.nhncorp.study.board.service.ArticleService#getArticles(com.nhncorp.study.board.model.ArticleSearchParam)
 	 */
-	public List<Article> getArticles(ArticleSearchParam searchParam) {
-		return articleMapper.selectArticles(searchParam);
+	@Override
+	public List<Article> getArticles(ArticleSearchParam param) {
+		return articleMapper.selectArticles(param);
+	}
+
+	/**
+	 * 게시글 상세 조회
+	 */
+	@Override
+	public Article getArticle(ArticleSearchParam param) {
+		return articleMapper.selectArticle(param);
 	}
 
 }
